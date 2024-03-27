@@ -32,13 +32,4 @@ jobs:
         pip install coverage tblib
     - name: Run Tests
       run: |
-        coverage run --source=appointment manage.py test appointment.tests --verbosity=1 --parallel
-        coverage report
-        coverage xml
-    - name: Upload to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml  # specify the location of the coverage report
-        flags: unittests  # optional
-        name: codecov-umbrella  # optional
+        python manage.py test --parallel
